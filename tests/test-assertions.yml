@@ -12,7 +12,7 @@
       register: kerberos_conf
 
     - name: "[Test] Test File Defaults"
-      shell: "grep {{kerberos_configuration_file}}"
+      shell: "cat {{kerberos_configuration_file}}"
       when: kerberos_conf.stat.exists == True
       register: kerberos_conf_contents
 
