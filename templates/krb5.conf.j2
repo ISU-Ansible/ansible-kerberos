@@ -11,6 +11,6 @@
 {% for key, value in item.iteritems() %}
 {%   if key != "section" %}
 {{key|replace("__",".")}} = {{value}}
-{%   endfor %}
+{%   end for %}
 
-{% endfor %}
+{% end for %}
