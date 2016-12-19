@@ -20,6 +20,7 @@
 #      shell: "which ldapsearch"
 #      register: ldapsearch_exists
 
+
     - debug:
         var: kerberos_conf
 
