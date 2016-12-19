@@ -7,10 +7,10 @@
 
 {% for item in kerberos_conf %}
 [{{item.section}}]
-
-{% for key, value in item.iteritems() %}
-{%   if key != "section" %}
+{%   for key, value in item.iteritems() %}
+{%     if key != "section" %}
 {{key|replace("__",".")}} = {{value}}
-{%   end for %}
+{%     endif %}
+{%   endfor %}
 
-{% end for %}
+{% endfor %}
