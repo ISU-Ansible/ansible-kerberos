@@ -11,20 +11,16 @@
         path: "{{kerberos_configuration_file}}"
       register: kerberos_conf
 
-#    - name: "[Test] Test File Defaults"
-#      shell: "grep {{kerberos_configuration_file}}"
-#      when: kerberos_conf.stat.exists == True
-#      register: kerberos_conf_contents
-
-#    - name: "[Test] ldapsearch client exists"
-#      shell: "which ldapsearch"
-#      register: ldapsearch_exists
-
+    - name: "[Test] Test File Defaults"
+      shell: "grep {{kerberos_configuration_file}}"
+      when: kerberos_conf.stat.exists == True
+      register: kerberos_conf_contents
 
     - debug:
-        var: kerberos_conf
+        var: kerberos_conf_contents
 
-#    - assert:
-#        that:
-#          - "kerberos_conf_contents.rc == 0"
-#          - "ldapsearch_exists.rc == 0"
+    - assert:
+        that:
+          - "kerberos_conf_contents.rc == 0"
+          - "kerberos_conf_contents.stdout.find('.example.com = EXAMPLE.COM')"
+          - "kerberos_conf_contents.stdout.find('example.com = EXAMPLE.COM')"
