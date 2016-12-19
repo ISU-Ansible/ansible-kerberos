@@ -1,0 +1,21 @@
+---
+- include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution }}.{{ ansible_distribution_major_version }}.yml"
+    - "{{ ansible_distribution }}.yml"
+    - "default.yml"
+
+- name: "Kerberos Installation"
+  package:
+    name: "{{ item }}"
+    state: installed
+  with_items:
+    - "{{kerberos_packages}}"
+
+- name: "OpenLDAP Configuration"
+  template:
+    src: krb5.conf.j2
+    dest: "{{kerberos_configuration_file}}"
+    owner: root
+    group: root
+    mode: 0644

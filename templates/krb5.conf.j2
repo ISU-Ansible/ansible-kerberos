@@ -1,0 +1,16 @@
+# {{ ansible_managed }}
+
+#
+# Kerberos configuration file
+#  See krb5.conf(5) for more information.
+#
+
+{% for item in kerberos_conf %}
+[{{item.section}}]
+
+{% for key, value in item.iteritems() %}
+{%   if key != "section" %}
+{{key|replace("__",".")}} = {{value}}
+{%   endfor %}
+
+{% endfor %}
