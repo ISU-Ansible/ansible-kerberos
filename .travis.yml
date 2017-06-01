@@ -45,4 +45,14 @@ script:
   - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/role_under_test/tests/test-assertions.yml'
 
 notifications:
+  email: false
+  irc:
+    channels:
+      - "chat.freenode.net#isudevops"
+    on_success: always
+    on_failure: change
+    use_notice: true
+    template:
+      - "%{repository_name}#%{build_number} [%{author}] (%{commit}): %{message} %{foo} "
+      - "Build details: %{build_url}"
   webhooks: https://galaxy.ansible.com/api/v1/notifications/

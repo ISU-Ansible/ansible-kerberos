@@ -9,7 +9,7 @@
 [{{item.section}}]
 {%   for key, value in item.iteritems() %}
 {%     if key != "section" %}
-{{key|replace("__",".")}} = {{value}}
+{{ key|replace("__",".") }} = {{ value }}
 {%     endif %}
 {%   endfor %}
 

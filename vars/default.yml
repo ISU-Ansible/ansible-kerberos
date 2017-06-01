@@ -1,7 +1,1 @@
 ---
-kerberos_configuration_file: /etc/krb5.conf
-
-kerberos_packages:
-  - krb5-workstation
-  - cyrus-sasl-gssapi
-  - cyrus-sasl

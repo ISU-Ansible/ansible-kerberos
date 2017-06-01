@@ -1,6 +1,6 @@
 galaxy_info:
   author: Barry Britt <bbritt@iastate.edu>
-  description: A customizable role for using ldap
+  description: A customizable role for setting up Kerberos 5
   company: Iowa State University
 
   # If the issue tracker for your role is not on github, uncomment the
@@ -39,6 +39,11 @@ galaxy_info:
         - 7
     - name: Fedora
       versions:
+        - 19
+        - 20
+        - 21
+        - 22
+        - 23
         - 24
         - 25
   #platforms:

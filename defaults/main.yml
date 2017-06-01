@@ -1,22 +1,18 @@
 ---
-# The following are located in vars/{{ansible_distribution}}.yml
 #
-# openldap_configuration_file
-# openlap_packages
+# This variable enables openssh. By default, we set it to true. If you're
+# running this role, you probably want it installed. If not, then you can
+# override this variable
+#
+kerberos_enabled: true
+kerberos_skip_defaults: true
 
-kerberos_conf:
-  - section: "logging"
-    default: "FILE:/var/log/krb5libs.log"
-    kdc: "FILE:/var/log/krb5kdc.log"
-    admin_server: "FILE:/var/log/kadmind.log"
-  - section: "libdefaults"
-    default_realm: "example.com"
-    dns_lookup_realm: "true"
-    dns_lookup_kdc: "true"
-    ticket_lifetime: "10h"
-    renew_lifetime: "7d"
-    default_keytab_name: "FILE:/etc/krb5.keytab"
-  - section: "realms"
-  - section: "domain_realm"
-    example__com: "EXAMPLE.COM"
-    __example__com: "EXAMPLE.COM"
+kerberos_packages: []
+
+kerberos_config_owner: root
+kerberos_config_group: root
+kerberos_config_mode: "0600"
+kerberos_config_file: "/etc/krb5.conf"
+kerberos_keytab_file: "/etc/krb5.keytab"
+
+kerberos_os_supported: no

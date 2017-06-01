@@ -5,3 +5,24 @@ kerberos_packages:
   - krb5-workstation
   - cyrus-sasl-gssapi
   - cyrus-sasl
+
+kerberos_conf:
+
+  - section: "logging"
+    default: "FILE:/var/log/krb5libs.log"
+    kdc: "FILE:/var/log/krb5kdc.log"
+    admin_server: "FILE:/var/log/kadmind.log"
+
+  - section: "libdefaults"
+    default_realm: "example.com"
+    dns_lookup_realm: "true"
+    dns_lookup_kdc: "true"
+    ticket_lifetime: "10h"
+    renew_lifetime: "7d"
+    default_keytab_name: "FILE:/etc/krb5.keytab"
+
+  - section: "realms"
+
+  - section: "domain_realm"
+    example__com: "EXAMPLE.COM"
+    __example__com: "EXAMPLE.COM"
