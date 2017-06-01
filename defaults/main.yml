@@ -1,18 +1,31 @@
 ---
 #
-# This variable enables openssh. By default, we set it to true. If you're
+# This variable enables kerberos. By default, we set it to true. If you're
 # running this role, you probably want it installed. If not, then you can
-# override this variable
+# override this variable.
 #
 kerberos_enabled: true
-kerberos_skip_defaults: true
+
+#
+# By default, we want the default OS configuration. This can be
+# overridden if necessary.
+#
+kerberos_skip_defaults: false
+
+#
+# By default, we set the os_supported variable to "no". This way, we can
+# override it in the vars defaults files for any OS that we can support with
+# this role.
+#
+kerberos_os_supported: no
 
 kerberos_packages: []
 
-kerberos_config_owner: root
-kerberos_config_group: root
-kerberos_config_mode: "0600"
+#
+# Base configuration options
+#
+kerberos_config_owner: "root"
+kerberos_config_group: "root"
+kerberos_config_mode: "0644"
 kerberos_config_file: "/etc/krb5.conf"
 kerberos_keytab_file: "/etc/krb5.keytab"
-
-kerberos_os_supported: no
