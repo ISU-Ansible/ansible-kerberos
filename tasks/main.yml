@@ -14,7 +14,7 @@
 
 - name: KERBEROS | Assert that OS is supported
   assert:
-    that: kerberos_os_supported: yes
+    that: kerberos_os_supported=yes
 
 - name: KERBEROS | Installation
   package:
@@ -30,3 +30,9 @@
     owner: root
     group: root
     mode: 0644
+
+- name: KERBEROS | Register that the kerberos role has run
+  set_fact: kerberos_has_run=true
+  when: kerberos_has_run is not defined
+  tags:
+    - kerberos
