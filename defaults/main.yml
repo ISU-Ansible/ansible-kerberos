@@ -19,6 +19,7 @@ kerberos_skip_defaults: false
 #
 kerberos_os_supported: no
 
+kerberos_conf: {}
 kerberos_packages: []
 
 #
