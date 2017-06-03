@@ -14,7 +14,8 @@
 
 - name: KERBEROS | Assert that OS is supported
   assert:
-    that: kerberos_os_supported == yes
+    that:
+      - "kerberos_os_supported == yes"
 
 - name: KERBEROS | Installation
   package:

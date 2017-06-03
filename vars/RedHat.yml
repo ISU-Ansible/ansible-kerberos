@@ -2,7 +2,8 @@
 kerberos_os_supported: yes
 kerberos_skip_defaults: false
 
-
+kerberos_config_file: "/etc/krb5.conf"
+kerberos_keytab_file: "/etc/krb5.keytab"
 
 kerberos_packages:
   - krb5-workstation
