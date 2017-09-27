@@ -22,10 +22,10 @@ kerberos_conf:
     ticket_lifetime: "10h"
     renew_lifetime: "7d"
     default_keytab_name: "FILE:/etc/krb5.keytab"
-  realms:
-  capaths:
-  appdefaults:
-  plugins:
+  realms: {}
+  capaths: {}
+  appdefaults: {}
+  plugins: {}
   domain_realm:
     example__com: "EXAMPLE.COM"
     __example__com: "EXAMPLE.COM"
