@@ -16,12 +16,13 @@ kerberos_conf:
     kdc: "FILE:/var/log/krb5kdc.log"
     admin_server: "FILE:/var/log/kadmind.log"
   libdefaults:
-    default_realm: "example.com"
-    dns_lookup_realm: "true"
+    default_realm: "EXAMPLE.COM"
+    dns_lookup_realm: "True"
     dns_lookup_kdc: "true"
-    ticket_lifetime: "10h"
+    ticket_lifetime: "24h"
     renew_lifetime: "7d"
     default_keytab_name: "FILE:/etc/krb5.keytab"
+    default_ccache_name: "KEYRING:persistent:%{uid}"
   realms: {}
   capaths: {}
   appdefaults: {}

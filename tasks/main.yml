@@ -1,5 +1,7 @@
 ---
 - name: KERBEROS | Include OS-specific variables
+  tags:
+    - kerberos
   include_vars: "{{ item }}"
   with_first_found:
     - "{{ ansible_distribution }}_{{ ansible_distribution_major_version }}_{{ ansible_distribution_minor_version}}.yml"
@@ -9,14 +11,16 @@
     - "{{ ansible_os_family }}_{{ ansible_distribution_major_version }}.yml"
     - "{{ ansible_os_family }}.yml"
     - "default.yml"
-  tags:
-    - kerberos
 
 - name: KERBEROS | Assert that OS is supported
+  tags:
+    - kerberos
   assert:
     that: kerberos_os_supported
 
 - name: KERBEROS | Installation
+  tags:
+    - kerberos
   package:
     name: "{{ item }}"
     state: installed
@@ -24,6 +28,8 @@
     - "{{ kerberos_packages }}"
 
 - name: KERBEROS | Configuration
+  tags:
+    - kerberos
   template:
     src: krb5.conf.j2
     dest: "{{ kerberos_config_file }}"
@@ -32,7 +38,7 @@
     mode: 0644
 
 - name: KERBEROS | Register that the kerberos role has run
-  set_fact: kerberos_has_run=true
-  when: kerberos_has_run is not defined
   tags:
     - kerberos
+  set_fact: kerberos_has_run=true
+  when: kerberos_has_run is not defined
