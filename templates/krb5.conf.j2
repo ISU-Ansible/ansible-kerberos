@@ -1,16 +1,41 @@
 # {{ ansible_managed }}
 
+{% macro section(name) -%}
+{%   for key, value in name.iteritems() %}
+{%     if value is string or value is number %}
+{{ key | replace("__",".") }} = {{ value }}
+{%     else %}
+{{ key | replace("__",".") }} = "{"
+{%       for i in value %}
+  {{ value }}
+{%       endfor %}
+"}"	
+{%     endif %}
+{%   endfor %}
+{%- endmacro %}
+
 #
 # Kerberos configuration file
 #  See krb5.conf(5) for more information.
 #
 
-{% for item in kerberos_conf %}
-[{{item.section}}]
-{%   for key, value in item.iteritems() %}
-{%     if key != "section" %}
-{{ key|replace("__",".") }} = {{ value }}
-{%     endif %}
-{%   endfor %}
+[logging]
+{{ section("kerberos_conf.logging") }}
 
-{% endfor %}
+[libdefaults]
+{{ section("kerberos_conf.libdefaults") }}
+
+[capaths]
+{{ section("kerberos_conf.capaths") }}
+
+[appdefaults]
+{{ section("kerberos_conf.appdefaults") }}
+
+[plugins]
+{{ section("kerberos_conf.plugins") }}
+
+[realms]
+{{ section("kerberos_conf.realms") }}
+
+[domain_realm]
+{{ section("kerberos_conf.domain_realm") }}
