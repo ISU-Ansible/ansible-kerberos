@@ -23,10 +23,6 @@ kerberos_conf_defaults:
     renew_lifetime: "7d"
     default_keytab_name: "FILE:/etc/krb5.keytab"
     default_ccache_name: "KEYRING:persistent:%{uid}"
-  realms: {}
-  capaths: {}
-  appdefaults: {}
-  plugins: {}
   domain_realm:
     example__com: "EXAMPLE.COM"
     __example__com: "EXAMPLE.COM"
