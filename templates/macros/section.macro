@@ -46,7 +46,7 @@
 {% macro body_subset_option(key, override) -%}
 {%   set value = undefined %}
 {%   if override is defined %}
-{%     set value = override %}
+{%     set value = override %}P
 {%   elif kerberos_conf[key] is defined %}
 {%     set value = kerberos_conf[key] %}
 {%   elif kerberos_conf_default[key] is defined %}
