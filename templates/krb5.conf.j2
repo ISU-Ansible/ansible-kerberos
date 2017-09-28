@@ -7,22 +7,59 @@
 #
 s
 [logging]
-{{ section(kerberos_conf['logging']) }}
+{{ body_section_option("logging", "admin_server", kerberos_conf_logging_admin_server) -}}
+{{ body_section_option("logging", "kdc", kerberos_conf_logging_kdc) -}}
+{{ body_section_option("logging", "default", kerberos_conf_logging_default) -}}
 
 [libdefaults]
-{{ section(kerberos_conf['libdefaults']) }}
+{{ body_section_option("libdefaults", "allow_weak_crypto", kerberos_conf_libdefaults_allow_weak_crypto) -}}
+{{ body_section_option("libdefaults", "ap_req_checksum_type", kerberos_conf_libdefaults_ap_req_checksum_type) -}}
+{{ body_section_option("libdefaults", "canonicalize", kerberos_conf_libdefaults_canonicalize) -}}
+{{ body_section_option("libdefaults", "ccache_type", kerberos_conf_libdefaults_ccache_type) -}}
+{{ body_section_option("libdefaults", "clockskew", kerberos_conf_libdefaults_clockskew) -}}
+{{ body_section_option("libdefaults", "default_ccache_name", kerberos_conf_libdefaults_default_ccache_name) -}}
+{{ body_section_option("libdefaults", "default_client_keytab_name", kerberos_conf_libdefaults_default_client_keytab_name) -}}
+{{ body_section_option("libdefaults", "default_keytab_name", kerberos_conf_libdefaults_default_keytab_name) -}}
+{{ body_section_option("libdefaults", "default_realm", kerberos_conf_libdefaults_default_realm) -}}
+{{ body_section_option("libdefaults", "default_tgs_enctypes", kerberos_conf_libdefaults_default_tgs_enctypes) -}}
+{{ body_section_option("libdefaults", "default_tkt_enctypes", kerberos_conf_libdefaults_default_tkt_enctypes) -}}
+{{ body_section_option("libdefaults", "dns_canonicalize_hostname", kerberos_conf_libdefaults_dns_canonicalize_hostname) -}}
+{{ body_section_option("libdefaults", "dns_lookup_kdc", kerberos_conf_libdefaults_dns_lookup_kdc) -}}
+{{ body_section_option("libdefaults", "err_fmt", kerberos_conf_libdefaults_err_fmt) -}}
+{{ body_section_option("libdefaults", "extra_addresses", kerberos_conf_libdefaults_extra_addresses) -}}
+{{ body_section_option("libdefaults", "forwardable", kerberos_conf_libdefaults_forwardable) -}}
+{{ body_section_option("libdefaults", "ignore_acceptor_hostname", kerberos_conf_libdefaults_ignore_acceptor_hostname) -}}
+{{ body_section_option("libdefaults", "k5login_authoritative", kerberos_conf_libdefaults_k5login_authoritative) -}}
+{{ body_section_option("libdefaults", "k5login_directory", kerberos_conf_libdefaults_k5login_directory) -}}
+{{ body_section_option("libdefaults", "kcm_mach_service", kerberos_conf_libdefaults_kcm_mach_service) -}}
+{{ body_section_option("libdefaults", "kcm_socket", kerberos_conf_libdefaults_kcm_socket) -}}
+{{ body_section_option("libdefaults", "kdc_default_options", kerberos_conf_libdefaults_kdc_default_options) -}}
+{{ body_section_option("libdefaults", "kdc_timesync", kerberos_conf_libdefaults_kdc_timesync) -}}
+{{ body_section_option("libdefaults", "kdc_req_checksum_type", kerberos_conf_libdefaults_kdc_req_checksum_type) -}}
+{{ body_section_option("libdefaults", "noaddresses", kerberos_conf_libdefaults_noaddresses) -}}
+{{ body_section_option("libdefaults", "permitted_enctypes", kerberos_conf_libdefaults_permitted_enctypes) -}}
+{{ body_section_option("libdefaults", "plugin_base_dir", kerberos_conf_libdefaults_plugin_base_dir) -}}
+{{ body_section_option("libdefaults", "preferred_preauth_types", kerberos_conf_libdefaults_preferred_preauth_types) -}}
+{{ body_section_option("libdefaults", "proxiable", kerberos_conf_libdefaults_proxiable) -}}
+{{ body_section_option("libdefaults", "rdns", kerberos_conf_libdefaults_rdns) -}}
+{{ body_section_option("libdefaults", "realm_try_domains", kerberos_conf_libdefaults_realm_try_domains) -}}
+{{ body_section_option("libdefaults", "renew_lifetime", kerberos_conf_libdefaults_renew_lifetime) -}}
+{{ body_section_option("libdefaults", "safe_checksum_type", kerberos_conf_libdefaults_safe_checksum_type) -}}
+{{ body_section_option("libdefaults", "ticket_lifetime", kerberos_conf_libdefaults_ticket_lifetime) -}}
+{{ body_section_option("libdefaults", "udp_preference_limit", kerberos_conf_libdefaults_udp_preference_limit) -}}
+{{ body_section_option("libdefaults", "verify_ap_req_nofail", kerberos_conf_libdefaults_verify_ap_req_nofail) -}}
 
 [capaths]
-{{ section(kerberos_conf['capaths']) }}
+{{ body_subset_option("capaths", kerberos_conf_capaths) -}}
 
 [appdefaults]
-{{ section(kerberos_conf['appdefaults']) }}
+{{ body_subset_option("appdefaults", kerberos_conf_appdefaults) -}}
 
 [plugins]
-{{ section(kerberos_conf['plugins']) }}
+{{ body_subset_option("plugins", kerberos_conf_plugins) -}}
 
 [realms]
-{{ section(kerberos_conf['realms']) }}
+{{ body_subset_option("realms", kerberos_conf_realms) -}}
 
 [domain_realm]
-{{ section(kerberos_conf['domain_realm']) }}
+{{ body_option("domain_realm", kerberos_conf_domain_realm) -}}

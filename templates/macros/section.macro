@@ -1,13 +1,66 @@
-{% macro section(name) -%}
-{%   for key, value in name.iteritems() %}
-{%     if value is string or value is number %}
-{{ key | replace("__",".") }} = {{ value }}
+{#- Body Sections Options #}
+{% macro body_section_option(section, key, override) -%}
+{%   set value = undefined %}
+{%   if override is defined %}
+{%     set value = override %}
+{%   elif kerberos_conf[section][key] is defined %}
+{%     set value = kerberos_conf[section][key] %}
+{%   elif kerberos_conf_defaults[section][key] is defined and kerberos_conf_skip_defaults != true %}
+{%     set value = kerberos_conf_defaults[section][key] %}
+{%   endif %}
+{{ render_option(key, value) -}}
+{%- endmacro %}
+
+{#- Body Options #}
+{% macro body_option(key, override) -%}
+{%   set value = undefined %}
+{%   if override is defined %}
+{%     set value = override %}
+{%   elif kerberos_conf[key] is defined %}
+{%     set value = kerberos_conf[key] %}
+{%   elif kerberos_conf_defaults[key] is defined and kerberos_conf_skip_defaults != true %}
+{%     set value = kerberos_conf_defaults[key] %}
+{%   endif %}
+{{ render_option(key, value) -}}
+{%- endmacro %}
+
+{#- Render Options Jinja Template #}
+{% macro render_option(key, value, indent=false) -%}
+{%   if value is defined %}
+{%     if indent == true %}  {% endif %}
+{%     if value is sameas true %}
+{{ key | replace("__", ".") }} = yes
+{%     elif value is sameas false %}
+{{ key | replace("__", ".") }} = no
+{%     elif value is string or value is number %}
+{{ key | replace("__", ".") }} = {{ value }}
 {%     else %}
-{{ key | replace("__",".") }} = "{"
 {%       for i in value %}
-  {{ value }}
+{{ key | replace("__", ".") }} = {{ i }}
 {%       endfor %}
-"}"	
 {%     endif %}
-{%   endfor %}
+{%   endif %}
+{%- endmacro %}
+
+{# Subset Options #}
+{% macro body_subset_option(key, override) -%}
+{%   set value = undefined %}
+{%   if override is defined %}
+{%     set value = override %}
+{%   elif kerberos_conf[key] is defined %}
+{%     set value = kerberos_conf[key] %}
+{%   elif kerberos_conf_default[key] is defined %}
+{%     set value = kerberos_conf_default[key]%}
+{%   endif %}
+{{ render_subset_option(key, value) }}
+{%- endmacro %}
+
+{% macro render_subset_option(key, value) -%}
+{%   if value is defined %}
+    {{ key | replace("__", ".") }} = {
+{%     for k,v in value %}
+        {{ k | replace("__", ".") }} = {{ v }}
+{%     endfor %}
+    }
+{%   endif %}
 {%- endmacro %}

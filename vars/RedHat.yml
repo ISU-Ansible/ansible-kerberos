@@ -10,7 +10,7 @@ kerberos_packages:
   - cyrus-sasl-gssapi
   - cyrus-sasl
 
-kerberos_conf:
+kerberos_conf_defaults:
   logging:
     default: "FILE:/var/log/krb5libs.log"
     kdc: "FILE:/var/log/krb5kdc.log"
