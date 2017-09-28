@@ -82,7 +82,7 @@
 {{ k1 | replace("__", ".") }} = {
 {%       if v1 is mapping %}
 {%         for k2,v2 in v1.iteritems() %}
-    {{ k2 | repalce("__", ".") }} = {{ v2 }}
+    {{ k2 | replace("__", ".") }} = {{ v2 }}
 {%         endfor %}
 {%       else %}
 {{ v1 }}
