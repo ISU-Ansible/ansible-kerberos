@@ -1,24 +1,11 @@
+{% from 'macros/section.macro' import section -%}
 # {{ ansible_managed }}
-
-{% macro section(name) -%}
-{%   for key, value in name.iteritems() %}
-{%     if value is string or value is number %}
-{{ key | replace("__",".") }} = {{ value }}
-{%     else %}
-{{ key | replace("__",".") }} = "{"
-{%       for i in value %}
-  {{ value }}
-{%       endfor %}
-"}"	
-{%     endif %}
-{%   endfor %}
-{%- endmacro %}
 
 #
 # Kerberos configuration file
 #  See krb5.conf(5) for more information.
 #
-
+s
 [logging]
 {{ section(kerberos_conf['logging']) }}
 
