@@ -11,6 +11,7 @@ s
 {{ body_section_option("logging", "kdc", kerberos_conf_logging_kdc) -}}
 {{ body_section_option("logging", "default", kerberos_conf_logging_default) -}}
 
+
 [libdefaults]
 {{ body_section_option("libdefaults", "allow_weak_crypto", kerberos_conf_libdefaults_allow_weak_crypto) -}}
 {{ body_section_option("libdefaults", "ap_req_checksum_type", kerberos_conf_libdefaults_ap_req_checksum_type) -}}
@@ -49,17 +50,22 @@ s
 {{ body_section_option("libdefaults", "udp_preference_limit", kerberos_conf_libdefaults_udp_preference_limit) -}}
 {{ body_section_option("libdefaults", "verify_ap_req_nofail", kerberos_conf_libdefaults_verify_ap_req_nofail) -}}
 
+
 [capaths]
 {{ body_subset_option("capaths", kerberos_conf_capaths) -}}
+
 
 [appdefaults]
 {{ body_subset_option("appdefaults", kerberos_conf_appdefaults) -}}
 
+
 [plugins]
 {{ body_subset_option("plugins", kerberos_conf_plugins) -}}
 
+
 [realms]
 {{ body_subset_option("realms", kerberos_conf_realms) -}}
+
 
 [domain_realm]
 {{ body_option("domain_realm", kerberos_conf_domain_realm) -}}
