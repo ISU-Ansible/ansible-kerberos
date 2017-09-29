@@ -7,8 +7,10 @@
 {%     if kerberos_conf[section][key] is defined %}
 {%       set value = kerberos_conf[section][key] %}
 {%     endif %}
-{%   elif kerberos_conf_defaults[section][key] is defined and kerberos_conf_skip_defaults != true %}
-{%     set value = kerberos_conf_defaults[section][key] %}
+{%   elif kerberos_conf_defaults[section] is defined %}
+{%     if kerberos_conf_defaults[section][key] is defined and kerberos_conf_skip_defaults != true %}
+{%       set value = kerberos_conf_defaults[section][key] %}
+{%     endif %}
 {%   endif %}
 {{ render_option(key,value) -}}
 {%- endmacro %}
