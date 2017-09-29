@@ -26,4 +26,3 @@ kerberos_conf_defaults:
   domain_realm:
     example__com: "EXAMPLE.COM"
     __example__com: "EXAMPLE.COM"
-

@@ -1,16 +1,15 @@
-{% from 'macros/section.macro' import body_section_option, body_subset_option, body_option, render_option, render_subset_option with context -%}
+{% from 'macros.j2' import body_section_option, body_subset_option, body_option, render_option, render_subset_option with context -%}
 # {{ ansible_managed }}
 
 #
 # Kerberos configuration file
 #  See krb5.conf(5) for more information.
 #
-s
-[logging]
-{{ body_section_option("logging", "admin_server", kerberos_conf_logging_admin_server) -}}
-{{ body_section_option("logging", "kdc", kerberos_conf_logging_kdc) -}}
-{{ body_section_option("logging", "default", kerberos_conf_logging_default) -}}
 
+[logging]
+{{ body_section_option("logging", "default", kerberos_conf_logging_default) -}}
+{{ body_section_option("logging", "kdc", kerberos_conf_logging_kdc) -}}
+{{ body_section_option("logging", "admin_server", kerberos_conf_logging_admin_server) -}}
 
 [libdefaults]
 {{ body_section_option("libdefaults", "allow_weak_crypto", kerberos_conf_libdefaults_allow_weak_crypto) -}}
@@ -50,22 +49,17 @@ s
 {{ body_section_option("libdefaults", "udp_preference_limit", kerberos_conf_libdefaults_udp_preference_limit) -}}
 {{ body_section_option("libdefaults", "verify_ap_req_nofail", kerberos_conf_libdefaults_verify_ap_req_nofail) -}}
 
-
 [capaths]
-{{ body_subset_option("capaths", kerberos_conf_capaths) -}}
-
+{{ body_subset_option("capaths", kerberos_conf_capaths) }}
 
 [appdefaults]
-{{ body_subset_option("appdefaults", kerberos_conf_appdefaults) -}}
-
+{{ body_subset_option("appdefaults", kerberos_conf_appdefaults) }}
 
 [plugins]
-{{ body_subset_option("plugins", kerberos_conf_plugins) -}}
-
+{{ body_subset_option("plugins", kerberos_conf_plugins) }}
 
 [realms]
-{{ body_subset_option("realms", kerberos_conf_realms) -}}
-
+{{ body_subset_option("realms", kerberos_conf_realms) }}
 
 [domain_realm]
-{{ body_option("domain_realm", kerberos_conf_domain_realm) -}}
+{{ body_option("domain_realm", kerberos_conf_domain_realm) }}
