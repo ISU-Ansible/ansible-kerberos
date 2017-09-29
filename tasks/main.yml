@@ -27,12 +27,6 @@
   with_items:
     - "{{ kerberos_packages }}"
 
-- debug:
-    var: kerberos_conf
-
-- debug:
-    var: kerberos_conf_defaults
-
 - name: KERBEROS | Configuration
   tags:
     - kerberos
