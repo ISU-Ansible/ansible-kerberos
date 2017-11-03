@@ -3,14 +3,10 @@
 {%   set value = undefined %}
 {%   if override is defined %}
 {%     set value = override %}
-{%   elif kerberos[section] is defined %}
-{%     if kerberos[section][key] is defined %}
-{%       set value = kerberos[section][key] %}
-{%     endif %}
-{%   elif kerberos_defaults[section] is defined %}
-{%     if kerberos_defaults[section][key] is defined and kerberos_skip_defaults != true %}
-{%       set value = kerberos_defaults[section][key] %}
-{%     endif %}
+{%   elif kerberos[section] is defined and kerberos[section][key] is defined %}
+{%     set value = kerberos[section][key] %}
+{%   elif kerberos_defaults[section] is defined and kerberos_defaults[section][key] is defined and kerberos_skip_defaults != true %}
+{%     set value = kerberos_defaults[section][key] %}
 {%   endif %}
 {{ render_option(key,value) -}}
 {%- endmacro %}
