@@ -2,6 +2,17 @@
 - hosts: localhost
   remote_user: root
 
+  vars:
+    kerberos:
+      libdefaults:
+        default_realm: "OTHEREXAMPLE.COM"
+        renew_lifetime: "30d"
+      domain_realm:
+        otherexample__com: "OTHEREXAMPLE.COM"
+        __otherexample__com: ".OTHEREXAMPLE.COM" 
+      realms:
+        OTHEREXAMPLE__COM:
+          test: test1
   roles:
     - role_under_test
 
@@ -22,5 +33,7 @@
     - assert:
         that:
           - "kerberos_config_contents.rc == 0"
-          - "kerberos_config_contents.stdout.find('.example.com = EXAMPLE.COM')"
-          - "kerberos_config_contents.stdout.find('example.com = EXAMPLE.COM')"
+          - "kerberos_config_contents.stdout.find('default_realm = OTHEREXAMPLE.COM')"
+          - "kerberos_config_contents.stdout.find('renew_lifetime = 30d')"
+          - "kerberos_config_contents.stdout.find('otherexample.com = OTHEREXAMPLE.COM')"
+          - "kerberos_config_contents.stdout.find('OTHEREXAMPLE.COM = {')"
