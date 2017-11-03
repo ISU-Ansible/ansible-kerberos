@@ -3,13 +3,13 @@
 {%   set value = undefined %}
 {%   if override is defined %}
 {%     set value = override %}
-{%   elif kerberos_conf[section] is defined %}
-{%     if kerberos_conf[section][key] is defined %}
-{%       set value = kerberos_conf[section][key] %}
+{%   elif kerberos[section] is defined %}
+{%     if kerberos[section][key] is defined %}
+{%       set value = kerberos[section][key] %}
 {%     endif %}
-{%   elif kerberos_conf_defaults[section] is defined %}
-{%     if kerberos_conf_defaults[section][key] is defined and kerberos_conf_skip_defaults != true %}
-{%       set value = kerberos_conf_defaults[section][key] %}
+{%   elif kerberos_defaults[section] is defined %}
+{%     if kerberos_defaults[section][key] is defined and kerberos_skip_defaults != true %}
+{%       set value = kerberos_defaults[section][key] %}
 {%     endif %}
 {%   endif %}
 {{ render_option(key,value) -}}
@@ -20,10 +20,10 @@
 {%   set value = undefined %}
 {%   if override is defined %}
 {%     set value = override %}
-{%   elif kerberos_conf[key] is defined %}
-{%     set value = kerberos_conf[key] %}
-{%   elif kerberos_conf_defaults[key] is defined %}
-{%     set value = kerberos_conf_defaults[key] %}
+{%   elif kerberos[key] is defined %}
+{%     set value = kerberos[key] %}
+{%   elif kerberos_defaults[key] is defined %}
+{%     set value = kerberos_defaults[key] %}
 {%   endif %}
 {{ render_subset_option(key,value) }}
 {%- endmacro %}
@@ -33,10 +33,10 @@
 {%   set value = undefined %}
 {%   if override is defined %}
 {%     set value = override %}
-{%   elif kerberos_conf[key] is defined %}
-{%     set value = kerberos_conf[key] %}
-{%   elif kerberos_conf_defaults[key] is defined and kerberos_conf_skip_defaults != true %}
-{%     set value = kerberos_conf_defaults[key] %}
+{%   elif kerberos[key] is defined %}
+{%     set value = kerberos[key] %}
+{%   elif kerberos_defaults[key] is defined and kerberos_skip_defaults != true %}
+{%     set value = kerberos_defaults[key] %}
 {%   endif %}
 {{ render_option(key,value) -}}
 {%- endmacro %}
