@@ -1,6 +1,6 @@
 ---
 kerberos_os_supported: yes
-kerberos_conf_skip_defaults: false
+kerberos_skip_defaults: false
 
 kerberos_config_file: "/etc/krb5.conf"
 kerberos_keytab_file: "/etc/krb5.keytab"
@@ -10,7 +10,7 @@ kerberos_packages:
   - cyrus-sasl-gssapi
   - cyrus-sasl
 
-kerberos_conf_defaults:
+kerberos_defaults:
   logging:
     default: "FILE:/var/log/krb5libs.log"
     kdc: "FILE:/var/log/krb5kdc.log"

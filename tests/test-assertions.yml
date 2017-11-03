@@ -9,18 +9,18 @@
     - name: "[Test] Does Configuration File Exist?"
       stat:
         path: "{{kerberos_config_file}}"
-      register: kerberos_conf
+      register: kerberos_config
 
     - name: "[Test] Test File Defaults"
       shell: "cat {{kerberos_config_file}}"
-      when: kerberos_conf.stat.exists == True
-      register: kerberos_conf_contents
+      when: kerberos_config.stat.exists == True
+      register: kerberos_config_contents
 
     - debug:
-        var: kerberos_conf_contents
+        var: kerberos_config_contents
 
     - assert:
         that:
-          - "kerberos_conf_contents.rc == 0"
-          - "kerberos_conf_contents.stdout.find('.example.com = EXAMPLE.COM')"
-          - "kerberos_conf_contents.stdout.find('example.com = EXAMPLE.COM')"
+          - "kerberos_config_contents.rc == 0"
+          - "kerberos_config_contents.stdout.find('.example.com = EXAMPLE.COM')"
+          - "kerberos_config_contents.stdout.find('example.com = EXAMPLE.COM')"
