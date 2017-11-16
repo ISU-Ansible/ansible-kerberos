@@ -10,6 +10,7 @@
 {{ body_section_option("logging","default",kerberos_conf_logging_default) -}}
 {{ body_section_option("logging","kdc",kerberos_conf_logging_kdc) -}}
 {{ body_section_option("logging","admin_server",kerberos_conf_logging_admin_server) -}}
+{% if true -%} {%- endif %}
 
 [libdefaults]
 {{ body_section_option("libdefaults","allow_weak_crypto",kerberos_conf_libdefaults_allow_weak_crypto) -}}
@@ -48,18 +49,24 @@
 {{ body_section_option("libdefaults","ticket_lifetime",kerberos_conf_libdefaults_ticket_lifetime) -}}
 {{ body_section_option("libdefaults","udp_preference_limit",kerberos_conf_libdefaults_udp_preference_limit) -}}
 {{ body_section_option("libdefaults","verify_ap_req_nofail",kerberos_conf_libdefaults_verify_ap_req_nofail) -}}
+{% if true -%} {%- endif %}
 
 [capaths]
 {{ body_subset_option("capaths",kerberos_conf_capaths) }}
+{% if true -%} {%- endif %}
 
 [appdefaults]
 {{ body_subset_option("appdefaults",kerberos_conf_appdefaults) }}
+{% if true -%} {%- endif %}
 
 [plugins]
 {{ body_subset_option("plugins",kerberos_conf_plugins) }}
+{% if true -%} {%- endif %}
 
 [realms]
 {{ body_subset_option("realms",kerberos_conf_realms) }}
+{% if true -%} {%- endif %}
 
 [domain_realm]
 {{ body_option("domain_realm",kerberos_conf_domain_realm) }}
+{% if true -%} {%- endif %}
