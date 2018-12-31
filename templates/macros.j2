@@ -44,7 +44,7 @@
 {%     if value is string or value is number %}
 {{ key | replace("__",".") }} = {{ value }}
 {%     elif value is mapping %}
-{%       for k,v in value.iteritems() %}
+{%       for k,v in value.items() %}
 {{ k | replace("__",".") }} = {{ v }}
 {%       endfor %}
 {%     else %}
@@ -57,10 +57,10 @@
 
 {% macro render_subset_option(key,value) -%}
 {%   if value is defined and value is mapping %}
-{%     for k1,v1 in value.iteritems() %}
+{%     for k1,v1 in value.items() %}
 {{ k1 | replace("__",".") }} = {
 {%       if v1 is mapping %}
-{%         for k2,v2 in v1.iteritems() %}
+{%         for k2,v2 in v1.items() %}
     {{ k2 | replace("__",".") }} = {{ v2 }}
 {%         endfor %}
 {%       else %}
