@@ -1,0 +1,25 @@
+---
+kerberos_os_supported: yes
+kerberos_skip_defaults: false
+
+kerberos_config_file: "/etc/krb5.conf"
+kerberos_keytab_file: "/etc/krb5.keytab"
+
+kerberos_packages:
+  - krb5-user
+  - sasl2-bin
+  - libsasl2-2
+  - libsasl2-modules
+  - libsasl2-modules-gssapi-mit
+
+kerberos_defaults:
+  libdefaults:
+    default_realm: "EXAMPLE.COM"
+    kdc_timesync: 1
+    ccache_type: 4
+    forwardable: true
+    proxiable: true
+    fcc-mit-ticketflags: true
+  domain_realm:
+    example__com: "EXAMPLE.COM"
+    __example__com: "EXAMPLE.COM"

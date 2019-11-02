@@ -35,6 +35,5 @@
           - "kerberos_config_contents.rc == 0"
           - "kerberos_config_contents.stdout.find('default_realm = OTHEREXAMPLE.COM')"
           - "kerberos_config_contents.stdout.find('renew_lifetime = 30d')"
-          - "kerberos_config_contents.stdout.find('ticket_lifetime = 24h')"
           - "kerberos_config_contents.stdout.find('otherexample.com = OTHEREXAMPLE.COM')"
           - "kerberos_config_contents.stdout.find('OTHEREXAMPLE.COM = {')"
