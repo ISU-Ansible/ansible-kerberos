@@ -19,6 +19,14 @@ kerberos_skip_defaults: false
 #
 kerberos_os_supported: no
 
+#
+# Those 2 variables control wither to modify sshd config
+# to enable Kerberos and GSSAPI logins.
+# They are false by default and need sshd to be already installed.
+#
+kerberos_sshd_enabled: no
+gssapi_sshd_enabled: no
+
 kerberos: {}
 kerberos_packages: []
 

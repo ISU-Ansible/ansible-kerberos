@@ -3,6 +3,8 @@
   remote_user: root
 
   vars:
+    kerberos_sshd_enabled: yes
+    gssapi_sshd_enabled: yes
     kerberos:
       libdefaults:
         default_realm: "OTHEREXAMPLE.COM"
