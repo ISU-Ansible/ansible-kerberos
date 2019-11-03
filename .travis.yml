@@ -12,6 +12,9 @@ env:
   - distro: fedora24
     init: /usr/lib/systemd/systemd
     run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+  - distro: ubuntu1804
+    init: /sbin/init
+    run_opts: ""
 
 # Tell Travis to start Docker when it brings up an environment.
 services:
