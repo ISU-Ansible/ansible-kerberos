@@ -2,5 +2,10 @@
 - hosts: localhost
   remote_user: root
 
+  pre_tasks:
+    - name: Install sshd
+      package:
+        name: openssh-server
+
   roles:
     - role_under_test
